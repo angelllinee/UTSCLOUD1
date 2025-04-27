@@ -1,14 +1,14 @@
 from flask import Flask, render_template
-import pymysql
+import psycopg2
 
 app = Flask(__name__)
 
 # Database connection (PostgreSQL)
-db = pymysql.connect(
+db = psycopg2.connect(
     host='ecom-db1.chm448q8s314.ap-southeast-1.rds.amazonaws.com',
     user='admin117',
     password='angeline117!',
-    dbname='ecom1-db'
+    dbname='ecom-db1'
 )
 
 @app.route('/')
