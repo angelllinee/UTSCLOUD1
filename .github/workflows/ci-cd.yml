@@ -1,0 +1,36 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Run tests
+        run: |
+          pytest
+
+      - name: Deploy to EC2
+        if: success()
+        run: |
+          ssh -i "EComEC2Key.pem" ec2-user@47.129.224.173 "cd /path/to/your/app && git pull && sudo systemctl restart your-app"
+        env:
+          HOST: ${{ secrets.47.129.224.173 }}
+          PRIVATE_KEY: ${{ secrets.ECOM_UTS_SECRETKEY }}
+          USER: ${{ secrets. }}

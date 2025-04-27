@@ -1,15 +1,34 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-    <title>Produk</title>
+    <meta charset="UTF-8">
+    <title>Daftar Produk</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .product {
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            width: 300px;
+        }
+        img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 <body>
     <h1>Daftar Produk</h1>
     {% for product in products %}
-    <div>
+    <div class="product">
         <h2>{{ product[0] }}</h2>
-        <p>Harga: {{ product[1] }}</p>
-        <img src="{{ product[2] }}" width="200px">
+        <p>Harga: Rp{{ product[1] }}</p>
+        <img src="{{ product[2] }}" alt="Gambar Produk">
     </div>
     {% endfor %}
 </body>

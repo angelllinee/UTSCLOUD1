@@ -3,12 +3,12 @@ import pymysql
 
 app = Flask(__name__)
 
-# Database connection (PostgreSQL)
+# Database connection (MySQL)
 db = pymysql.connect(
-    host='ecom1-db.chm448q8s314.ap-southeast-1.rds.amazonaws.com',
+    host='47.129.22.75',
     user='admin117',
     password='angeline117!',
-    database='ecom1-db'
+    database='ecom1db'
 )
 
 @app.route('/')
@@ -19,4 +19,4 @@ def index():
     return render_template('index.html', products=products)
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=80)
+    app.run(host='0.0.0.0', port=5000)
